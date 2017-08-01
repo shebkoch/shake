@@ -4,12 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Shake : MonoBehaviour {
 
-	public float magnitude;
-	public float time;
-	public Text score;
-	int sc = 0;
-	void Update () 
-		if (Input.acceleration.magnitude < 1f) sc++;
-		score.text = sc.ToString(); 
+	public GameObject startMenu;
+	public GameObject cork;
+	public Image slider;
+	public float maxScore;
+	float magnitude;
+	void Update () {
+		magnitude = Input.acceleration.magnitude;
+		if (magnitude <= 0.5) {
+			startMenu.SetActive(false);
+			slider.gameObject.SetActive(true);
+		}
+		maxScore -= magnitude;
+		slider.fillAmount = maxScore / 100;
+		if (maxScore <= 0) cork.transform.position = new Vector3(transform.position.x, transform.position.y-1,0);
 	}
 }
