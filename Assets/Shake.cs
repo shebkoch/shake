@@ -11,11 +11,13 @@ public class Shake : MonoBehaviour {
 	float magnitude;
 	void Update () {
 		magnitude = Input.acceleration.magnitude;
-		if (magnitude <= 0.5) {
+		Vector3 corkPos = cork.transform.position;
+		if (magnitude >= 0.5) {
 			startMenu.SetActive(false);
+			maxScore += magnitude;
+			slider.fillAmount = maxScore / 100;
 		}
-		maxScore +=  magnitude;
-		slider.fillAmount = maxScore / 100;
-		if (maxScore >= 100) cork.transform.position = new Vector3(transform.position.x, transform.position.y-0.1f,0);
+		//if (maxScore >= 100)
+			cork.transform.position = new Vector3(corkPos.x, corkPos.y+0.5f,0);
 	}
 }
