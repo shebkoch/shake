@@ -5,10 +5,11 @@ using UnityEngine.UI;
 public class Shake : MonoBehaviour {
 
 	public GameObject startMenu;
-	public GameObject cork;
+	Transform cap;
 	public Image slider;
-	public float maxScore;	
-	public GameObject[] bottles = new GameObject[3];
+	public float maxScore;
+	const int bottleCount = 4;
+	public GameObject[] bottles = new GameObject[bottleCount];
 	int bottlePointer = 0;
 	float magnitude;
 	public void LeftSwap()
@@ -41,14 +42,17 @@ public class Shake : MonoBehaviour {
 	void Update () {
 		//magnitude = Input.acceleration.magnitude;
 		magnitude = Input.acceleration.y;
-		Vector3 corkPos = cork.transform.position;
+		cap = bottles[bottlePointer].transform.GetChild(0);
 		if (magnitude >= 0.5) {
 			startMenu.SetActive(false);
 			maxScore += magnitude;
 			slider.fillAmount = maxScore / 250;
 		}
 		if (maxScore >= 250)
-			cork.transform.position = new Vector3(corkPos.x, corkPos.y+0.5f,0);
+		{
+			
+			cap.position = new Vector3(cap.position.x, cap.position.y + 0.5f, 0);
+		}
 		//Debug.Log(maxScore);
 		//Debug.Log("sli" + slider.fillAmount);
 	}
