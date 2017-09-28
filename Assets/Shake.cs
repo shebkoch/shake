@@ -46,10 +46,10 @@ public class Shake : MonoBehaviour
 		if (magnitude >= shakeDetectionThreshold && swap.IsBought()) {
 			startMenu.SetActive(false);
 			maxScore += magnitude;
-			slider.fillAmount = maxScore / 500;
+			slider.fillAmount = maxScore / 1000;
 
 		} //TODO: add ui
-		if (maxScore >= 500) {
+		if (maxScore >= 1000) {
 			if (!isEnd) {
 				endMenu.SetActive(true);
 				EconomicsControl.Instance.RewardGain();
