@@ -7,7 +7,7 @@ public class EconomicsControl : MonoBehaviour {
 
 	Swap swap;
 	public Text moneyText;
-	public static int money = 200;
+	public static int money = 0;
 	public int reward;
 	public static EconomicsControl Instance { get; private set; }
 	public void Awake() {
