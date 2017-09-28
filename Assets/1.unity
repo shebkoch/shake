@@ -282,6 +282,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1228190754}
   reward: 50
+--- !u!114 &132132754 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114669467106661800, guid: 1b26c3636af55c5449b6ad9bf4a83be7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1736997604}
+  m_Script: {fileID: 11500000, guid: 70a4ccb0fc57b674b92dc643f659f860, type: 3}
 --- !u!1 &384374377
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,8 +975,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 132132751}
-        m_MethodName: RestartButton
+      - m_Target: {fileID: 132132754}
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

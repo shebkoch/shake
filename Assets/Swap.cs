@@ -16,6 +16,8 @@ public class Swap : MonoBehaviour {
 		for(int i = 0; i < bottleCount; i++) {
 			bottles[i].bottle = Instantiate(bottles[i].bottle);
 			bottles[i].bottle.transform.SetParent(canvas, false);
+			bottles[i].cap = bottles[i].bottle.transform.GetChild(0);
+			bottles[i].capStartPosition = bottles[i].cap.position;
 		}
 		ShowBottle();
 	}
@@ -52,7 +54,10 @@ public class Swap : MonoBehaviour {
 		}
 	}
 	public Transform GetCap() {
-		return bottles[bottlePointer].bottle.transform.GetChild(0);
+		return bottles[bottlePointer].cap;
+	}
+	public void CapAtStartPosition() {
+		bottles[bottlePointer].cap.position = bottles[bottlePointer].capStartPosition;
 	}
 	void Update () {
 		

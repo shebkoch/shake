@@ -29,6 +29,14 @@ public class Shake : MonoBehaviour
 		shakeDetectionThreshold *= shakeDetectionThreshold;
 		lowPassValue = Input.acceleration;
 	}
+	public void StartGame() {
+		endMenu.SetActive(false);
+		startMenu.SetActive(true);
+		slider.fillAmount = 0;
+		maxScore = 0;
+		isEnd = false;
+		swap.CapAtStartPosition();
+	}
 	void Update() {
 		cap = swap.GetCap();
 		Vector3 acceleration = Input.acceleration;

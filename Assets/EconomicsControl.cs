@@ -16,7 +16,7 @@ public class EconomicsControl : MonoBehaviour {
 		MoneyChange();
 	}
 	public void Buy() {
-		if (money > swap.GetCost()) {
+		if (money >= swap.GetCost()) {
 			swap.IsBought(true);
 			money -= swap.GetCost();
 			MoneyChange();
