@@ -232,17 +232,86 @@ GameObject:
   m_PrefabParentObject: {fileID: 1617343186119250, guid: 1b26c3636af55c5449b6ad9bf4a83be7,
     type: 2}
   m_PrefabInternal: {fileID: 1736997604}
---- !u!114 &132132751
-MonoBehaviour:
+--- !u!82 &132132751
+AudioSource:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 132132750}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622d2451381364143bf8319d7ed68b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b3a1c89c6816a0947ae92c9bb910dadf, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &132132752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,10 +323,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446712cf73615e54ba40a8d779917016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aplo: {fileID: 0}
   canvas: {fileID: 631851985}
   buyButton: {fileID: 384374377}
   bottles:
-  - bottle: {fileID: 1125363524142154, guid: a4176c07eb336d848ace457ecc8a881e, type: 2}
+  - bottle: {fileID: 1398127177738840, guid: 6a890104230111445848226bb99dbcab, type: 2}
     isOpen: 1
     cost: 0
     cap: {fileID: 0}
@@ -272,9 +342,14 @@ MonoBehaviour:
     cost: 150
     cap: {fileID: 0}
     capStartPosition: {x: 0, y: 0, z: 0}
-  - bottle: {fileID: 1599414375739284, guid: 25259adeb7d58f74ebf0f69ce89981cb, type: 2}
+  - bottle: {fileID: 1394702772212450, guid: 761d62d90579cc646a35b7e79ba98ad1, type: 2}
     isOpen: 0
     cost: 200
+    cap: {fileID: 0}
+    capStartPosition: {x: 0, y: 0, z: 0}
+  - bottle: {fileID: 1680437859020630, guid: 2b49777c6b53c8f45ac4b3442a8ae3c9, type: 2}
+    isOpen: 0
+    cost: 500
     cap: {fileID: 0}
     capStartPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &132132753
@@ -583,7 +658,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1665911017
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &631851985
@@ -1827,6 +1902,11 @@ Prefab:
       propertyPath: endMenu
       value: 
       objectReference: {fileID: 669176585}
+    - target: {fileID: 114669467106661800, guid: 1b26c3636af55c5449b6ad9bf4a83be7,
+        type: 2}
+      propertyPath: aplo
+      value: 
+      objectReference: {fileID: 8300000, guid: b3a1c89c6816a0947ae92c9bb910dadf, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b26c3636af55c5449b6ad9bf4a83be7, type: 2}
   m_IsPrefabParent: 0
