@@ -49,8 +49,8 @@ public class Shake : MonoBehaviour
 			startMenu.SetActive(false);
 			maxScore += magnitude;
 		} //TODO: add ui
-		maxScore -= (maxScore <= 0) ? 0 : 50*Time.deltaTime;
-		slider.fillAmount = maxScore / 1000;
+		maxScore -= (maxScore <= 0) ? 0 : 100*Time.deltaTime;
+		slider.fillAmount = maxScore / 5000;
 		if (maxScore >= 1000) {
 			if (!isEnd) {
 				endMenu.SetActive(true);
