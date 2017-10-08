@@ -47,9 +47,9 @@ public class Shake : MonoBehaviour
 		float magnitude = deltaAcceleration.sqrMagnitude;
 		if (magnitude >= shakeDetectionThreshold && swap.IsBought()) {
 			startMenu.SetActive(false);
-			maxScore += magnitude * Time.deltaTime;
+			maxScore += magnitude;
 		} //TODO: add ui
-		maxScore -= (maxScore <= 0) ? 0 : 100*Time.deltaTime;
+		maxScore -= (maxScore <= 0) ? 0 : 50*Time.deltaTime;
 		slider.fillAmount = maxScore / 1000;
 		if (maxScore >= 1000) {
 			if (!isEnd) {
