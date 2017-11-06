@@ -11,6 +11,8 @@ public class Shake : MonoBehaviour
 	Transform cap;
 	public Image slider;
 	public float maxScore;
+	public float timer;
+	public Text timerText;
 	bool isEnd = false;
 	float magnitude = 0;
 	float accelerometerUpdateInterval = 1.0f / 60.0f;
@@ -45,14 +47,19 @@ public class Shake : MonoBehaviour
 		lowPassValue = Vector3.Lerp(lowPassValue, acceleration, lowPassFilterFactor);
 		Vector3 deltaAcceleration = acceleration - lowPassValue;
 		float magnitude = deltaAcceleration.sqrMagnitude;
-		if (magnitude >= shakeDetectionThreshold && swap.IsBought()) {
+		if (magnitude >= shakeDetectionThreshold && swap.IsBought())
+		{
+			timer = Time.time;
 			startMenu.SetActive(false);
 			maxScore += magnitude;
 		} //TODO: add ui
 		maxScore -= (maxScore <= 0) ? 0 : 100*Time.deltaTime;
 		slider.fillAmount = maxScore / 5000;
-		if (maxScore >= 1000) {
+		if (slider.fillAmount >= 1) {
 			if (!isEnd) {
+				timer = Time.time - timer;
+				timerText.text = "" + (int)(timer * 100) / 100f;
+				timer = 0;
 				endMenu.SetActive(true);
 				EconomicsControl.Instance.RewardGain();
 				audioSource.PlayOneShot(aplo);
