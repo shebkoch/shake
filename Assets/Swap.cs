@@ -6,7 +6,7 @@ public class Swap : MonoBehaviour {
 	public static Swap Instance { get; private set; }
 	public Transform canvas;
 	public GameObject buyButton;
-	const int bottleCount = 5;
+	const int bottleCount = 7;
 	int bottlePointer = 0;
 	public Bottle[] bottles = new Bottle[bottleCount];
 	public void Awake() {
