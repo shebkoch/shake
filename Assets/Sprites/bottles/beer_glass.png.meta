@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ffdc01d198f7a3b489b3aec7e10e8bd9
-timeCreated: 1515070799
+guid: 95a1484451aaa1c43ae86903647fe7ec
+timeCreated: 1519056516
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -85,8 +85,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 203
-        height: 690
+        width: 845
+        height: 2872
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -96,10 +96,10 @@ TextureImporter:
       name: beer_glass_1
       rect:
         serializedVersion: 2
-        x: 214
-        y: 674
-        width: 102
-        height: 31
+        x: 931
+        y: 2742
+        width: 421
+        height: 119
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

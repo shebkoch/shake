@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d31fa4427c790ea41a9f28a6c4f5c510
-timeCreated: 1515070632
+guid: 0c35dfa56d0cf484ab96e4a96763a890
+timeCreated: 1519051474
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -96,8 +96,8 @@ TextureImporter:
       name: champagne_1
       rect:
         serializedVersion: 2
-        x: 257
-        y: 551
+        x: 216
+        y: 547
         width: 81
         height: 121
       alignment: 0

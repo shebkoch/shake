@@ -81,10 +81,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Bottle.cs" />
-    <Compile Include="Assets\EconomicsControl.cs" />
-    <Compile Include="Assets\Shake.cs" />
-    <Compile Include="Assets\Swap.cs" />
+    <Compile Include="Assets\Scripts\AudioControl.cs" />
+    <Compile Include="Assets\Scripts\Bottle.cs" />
+    <Compile Include="Assets\Scripts\EconomicsControl.cs" />
+    <Compile Include="Assets\Scripts\Shake.cs" />
+    <Compile Include="Assets\Scripts\Swap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

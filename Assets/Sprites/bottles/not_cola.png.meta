@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 825fbf07c1beb6148b539132ea2b0e4a
-timeCreated: 1515070823
+guid: f800a1e611bedf749adf185f63d20e5f
+timeCreated: 1519053734
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -85,8 +85,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 232
-        height: 743
+        width: 963
+        height: 3094
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -96,10 +96,10 @@ TextureImporter:
       name: not_cola_1
       rect:
         serializedVersion: 2
-        x: 290
-        y: 712
-        width: 106
-        height: 27
+        x: 1014
+        y: 2941
+        width: 439
+        height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
