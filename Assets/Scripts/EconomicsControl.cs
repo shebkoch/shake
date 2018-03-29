@@ -7,24 +7,25 @@ public class EconomicsControl : MonoBehaviour {
 
 	Swap swap;
 	public Text moneyText;
-	public static int money = 0;
+	public static int score = 0;
+	
 	public int reward;
 	public static EconomicsControl Instance { get; private set; }
 	public void Awake() {
 		Instance = this;
 		swap = Swap.Instance;
-		MoneyChange();
+		if (PlayerPrefs.HasKey("score"))
+		{
+			score = PlayerPrefs.GetInt("score");
+		}
+		
 	}
-	public void Buy() {
-		if (money >= swap.GetCost()) {
-			swap.IsBought(true);
-			money -= swap.GetCost();
-			MoneyChange();
-		}//TODO: Message
-	}
-	public void RewardGain() {
-		money += reward;
-		MoneyChange();
+	public void RewardGain()
+	{
+		score += reward;
+		print(score);
+		moneyText.text = score.ToString();
+		PlayerPrefs.SetInt("score", score);
 	}
 	public void ShowRewardedVideo() {
 		ShowOptions options = new ShowOptions();
@@ -34,10 +35,7 @@ public class EconomicsControl : MonoBehaviour {
 
 	void HandleShowResult(ShowResult result) {
 		if (result == ShowResult.Finished) {
-			RewardGain();
+			
 		}//TODO: unity man
-	}
-	public void MoneyChange() {
-		moneyText.text = money.ToString();
 	}
 }

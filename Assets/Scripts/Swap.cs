@@ -8,19 +8,26 @@ public class Swap : MonoBehaviour {
 	public static Swap Instance { get; private set; }
 	public Transform canvas;
 	public GameObject buyButton;
-	const int bottleCount = 7;	//TODO: убрать эту херню
-	int bottlePointer = 0;
-	public Bottle[] bottles = new Bottle[bottleCount];
+	int bottleCount;
+	public int bottlePointer = 0;
+	public List<Bottle> bottles = new List<Bottle>();
 	public void Awake() {
 		Instance = this;
 	}
 	void Start () {
-		for(int i = 0; i < bottleCount; i++) {
-			bottles[i].bottle = Instantiate(bottles[i].bottle);
-			//bottles[i].bottle.transform.SetParent(canvas, false);
-			bottles[i].cap = bottles[i].bottle.transform.GetChild(0);
-			bottles[i].capStartPosition = bottles[i].cap.position;
+		foreach (var bottle in bottles)
+		{
+			bottle.bottle = Instantiate(bottle.bottle);
+			bottle.cap = bottle.bottle.transform.GetChild(0);
+			bottle.capStartPosition = bottle.cap.position;
 		}
+		bottleCount = bottles.Count;
+		//for(int i = 0; i < bottleCount; i++) {
+		//	bottles[i].bottle = Instantiate(bottles[i].bottle);
+		//	//bottles[i].bottle.transform.SetParent(canvas, false);
+		//	bottles[i].cap = bottles[i].bottle.transform.GetChild(0);
+		//	bottles[i].capStartPosition = bottles[i].cap.position;
+		//}
 		ShowBottle();
 	}
 	public void LeftSwap() {
@@ -33,31 +40,34 @@ public class Swap : MonoBehaviour {
 		if (bottlePointer > bottleCount - 1) bottlePointer = 0;
 		ShowBottle();
 	}
-	public bool IsBought(bool isChange = false) {
-		if (isChange) bottles[bottlePointer].isOpen = true;
-		return bottles[bottlePointer].isOpen;
-	}
 	
 	public int GetCost() {
-		return bottles[bottlePointer].cost;
+		return 0;//TODO
+	}
+	public bool isCurrentOpen(){
+		return bottles[bottlePointer].scoreToNext <= EconomicsControl.score;
 	}
 	public void ShowBottle() {
 		foreach (var bottle in bottles) {
 			bottle.bottle.SetActive(false);
 		}
 		bottles[bottlePointer].bottle.SetActive(true);
-		if (!bottles[bottlePointer].isOpen) {
-			//bottles[bottlePointer].bottle.GetComponentInChildren<Text>().text = bottles[bottlePointer].cost.ToString();
-			buyButton.SetActive(true);
-		}else {
-			buyButton.SetActive(false);
+		if (bottles[bottlePointer].scoreToNext <= EconomicsControl.score) {
+			bottles[bottlePointer].bottle.GetComponent<SpriteRenderer>().sprite = bottles[bottlePointer].normalBottle;
 			//bottles[bottlePointer].bottle.GetComponentInChildren<Text>().text = "";
-
+			
+		}else {
+			//bottles[bottlePointer].bottle.GetComponentInChildren<Text>().text = bottles[bottlePointer].cost.ToString();
+			bottles[bottlePointer].bottle.GetComponent<SpriteRenderer>().sprite = bottles[bottlePointer].shadowBottle;
 		}
 	}
-	public Transform GetCap() {
-		return bottles[bottlePointer].cap;
+	public void CapForce()
+	{
+		bottles[bottlePointer].cap.transform.Translate(Vector3.up * Time.deltaTime * 10); //TODO: change
 	}
+	//public Transform GetCap() {
+	//	return bottles[bottlePointer].cap;
+	//}
 	public void CapAtStartPosition() {
 		bottles[bottlePointer].cap.position = bottles[bottlePointer].capStartPosition;
 	}

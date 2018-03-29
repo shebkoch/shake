@@ -3,8 +3,9 @@
 [System.Serializable]
 public class Bottle {
 	public GameObject bottle;
-	public bool isOpen = false;
-	public int cost;
+	public Sprite normalBottle;
+	public Sprite shadowBottle;
 	public Transform cap;
 	public Vector3 capStartPosition;
+	public int scoreToNext;
 }
