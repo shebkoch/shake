@@ -13,12 +13,7 @@ public class AdControl : MonoBehaviour
 
     private void RequestBanner()
     {
-#if UNITY_ANDROID
 		string adUnitId = "ca-app-pub-1099518655144958/5920256074";
-		// string adUnitId = "ca-app-pub-1099518655144958/1149240778";
-#else
-            string adUnitId = "unexpected_platform";
-#endif
 		bannerView = new BannerView(adUnitId, AdSize.SmartBanner, AdPosition.Bottom);
 		AdRequest request = new AdRequest.Builder().Build();
 		bannerView.LoadAd(request);

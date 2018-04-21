@@ -18,6 +18,7 @@ public class Swap : MonoBehaviour {
 		foreach (var bottle in bottles)
 		{
 			bottle.bottle = Instantiate(bottle.bottle);
+			bottle.shadowBottle = Instantiate(bottle.shadowBottle);
 			bottle.cap = bottle.bottle.transform.GetChild(0);
 			bottle.capStartPosition = bottle.cap.position;
 		}
@@ -50,15 +51,17 @@ public class Swap : MonoBehaviour {
 	public void ShowBottle() {
 		foreach (var bottle in bottles) {
 			bottle.bottle.SetActive(false);
+			bottle.shadowBottle.SetActive(false);
+
 		}
-		bottles[bottlePointer].bottle.SetActive(true);
+
 		if (bottles[bottlePointer].scoreToNext <= EconomicsControl.score) {
-			bottles[bottlePointer].bottle.GetComponent<SpriteRenderer>().sprite = bottles[bottlePointer].normalBottle;
-			//bottles[bottlePointer].bottle.GetComponentInChildren<Text>().text = "";
-			
-		}else {
-			//bottles[bottlePointer].bottle.GetComponentInChildren<Text>().text = bottles[bottlePointer].cost.ToString();
-			bottles[bottlePointer].bottle.GetComponent<SpriteRenderer>().sprite = bottles[bottlePointer].shadowBottle;
+			bottles[bottlePointer].bottle.SetActive(true);
+			bottles[bottlePointer].shadowBottle.SetActive(false);
+		}
+		else {
+			bottles[bottlePointer].shadowBottle.SetActive(true);
+			bottles[bottlePointer].bottle.SetActive(false);
 		}
 	}
 	public void CapForce()
