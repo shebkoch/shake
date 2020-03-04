@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,12 @@ public class Swap : MonoBehaviour {
 	int bottleCount;
 	public int bottlePointer = 0;
 	public List<Bottle> bottles = new List<Bottle>();
+	public TextMeshProUGUI needScoreText;
+	private int startReward;
+
+	public AudioSource audioSource;
+	
+
 	public void Awake() {
 		Instance = this;
 	}
@@ -20,6 +27,7 @@ public class Swap : MonoBehaviour {
 			bottle.bottle = Instantiate(bottle.bottle);
 			bottle.shadowBottle = Instantiate(bottle.shadowBottle);
 			bottle.cap = bottle.bottle.transform.GetChild(0);
+			bottle.foam = bottle.bottle.transform.GetChild(1).gameObject;
 			bottle.capStartPosition = bottle.cap.position;
 		}
 		bottleCount = bottles.Count;
@@ -54,15 +62,34 @@ public class Swap : MonoBehaviour {
 			bottle.shadowBottle.SetActive(false);
 
 		}
-
+		int scoreToNext = bottles[bottlePointer].scoreToNext;
+		Shake.Instance.maxScore = MaxScoreFunc(scoreToNext);
+		Shake.Instance.scoreReduceSpeed = ScoreReduceFunc(scoreToNext);
+		startReward = 40;
+		EconomicsControl.Instance.reward = scoreToNext/bottles[bottlePointer].estimatedCount;
+		
 		if (bottles[bottlePointer].scoreToNext <= EconomicsControl.score) {
 			bottles[bottlePointer].bottle.SetActive(true);
 			bottles[bottlePointer].shadowBottle.SetActive(false);
+			needScoreText.text = null;
 		}
-		else {
+		else
+		{
+
+			needScoreText.text = scoreToNext.ToString(); 
 			bottles[bottlePointer].shadowBottle.SetActive(true);
 			bottles[bottlePointer].bottle.SetActive(false);
 		}
+	}
+
+	private float ScoreReduceFunc(float x)
+	{
+		return 0.013f * x + 500;
+	}
+
+	private float MaxScoreFunc(float x)
+	{
+		return 4000*Mathf.Log(x/100, 2)+4000;
 	}
 	public void CapForce()
 	{
@@ -74,7 +101,19 @@ public class Swap : MonoBehaviour {
 	public void CapAtStartPosition() {
 		bottles[bottlePointer].cap.position = bottles[bottlePointer].capStartPosition;
 	}
-	void Update () {
-		
+
+	public void Foam()
+	{
+		bottles[bottlePointer].foam.SetActive(true);
+	}
+
+	public void EndFoam()
+	{
+		bottles[bottlePointer].foam.SetActive(false);
+	}
+
+	public void Play()
+	{
+		audioSource.PlayOneShot(bottles[bottlePointer].audio);
 	}
 }

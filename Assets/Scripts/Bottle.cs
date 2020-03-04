@@ -3,9 +3,11 @@
 [System.Serializable]
 public class Bottle {
 	public GameObject bottle;
-	public Sprite normalBottle;
 	public GameObject shadowBottle;
-	public Transform cap;
-	public Vector3 capStartPosition;
+	[HideInInspector] public Transform cap;
+	[HideInInspector] public Vector3 capStartPosition;
+	[HideInInspector] public GameObject foam;
+	public AudioClip audio;
 	public int scoreToNext;
+	public int estimatedCount;
 }
